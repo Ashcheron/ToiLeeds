@@ -6,16 +6,15 @@
 
 <ion-content padding>
   <ion-list style="">
-      
-    <ion-item *ngFor="let i of vessat">
-    <ion-avatar item-start [style.background-color]= 
-          "i.status >= 15 ? this.red: 
-          i.status >= 10 ? this.yellow: this.green" >
-      
+
+    <ion-item *ngFor="let i of toilets">
+      <ion-avatar item-end [style.background-color]="i.count >= 15 ? this.red: 
+          i.count >= 10 ? this.yellow: this.green">
+
       </ion-avatar>
 
       <h1>{{i.name}}</h1>
-      <h2>{{"queus: " + i.status}}</h2>
+      <h2>{{"queus: " + i.count}}</h2>
 
     </ion-item>
 

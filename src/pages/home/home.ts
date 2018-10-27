@@ -1,34 +1,52 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import {Injectable} from '@angular/core'
 import { NavController } from "ionic-angular";
+import { Observable } from "rxjs/Observable";
+import { HttpClient} from "@angular/common/http";
+import * as _ from "lodash";
+import "rxjs/Rx";
+
+interface Vessa {
+  id: number;
+  count: number;
+  name: String;
+  gps: String;
+  timestamp: String;
+  type: number;
+}
 
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
-export class HomePage {
+export class HomePage implements OnInit{
+  yellow: String;
+  green: String;
+  red: String;
 
-  yellow : String;
-  green : String;
-  red : String;
-  vessat: {
-    ID: number;
-    name: String;
-    status: number;
-    
-  }[];
+  public toilets = []; 
 
-  items = ["lol", "troll", "patrol"];
-  constructor(public navCtrl: NavController) {
+  private _url = "http://10.8.0.4:3000/beer";
 
+  constructor(public navCtrl: NavController, private http: HttpClient) {
     this.yellow = "#ffd62a";
     this.green = "#2ec95c";
     this.red = "#ff2f2f";
 
-    this.vessat = [
-      { ID: 1, name: "toilet wing B", status: 40 },
-      { ID: 2, name: "toilet wing A", status: 0 },
-      { ID: 3, name: "toilet wing C", status: 10 },
-      { ID: 4, name: "toilet wing D", status: 5 }
-    ];
+    this.getData();
+
+    console.log(this.toilets)
+  }
+
+  ngOnInit() {
+    this.getData()
+    .subscribe(data => this.toilets = data);
+  }
+
+  getData(): Observable<Vessa[]> {
+    return this.http.get<Vessa[]>("http://10.8.0.4:3000/beer");
+    
+    //console.log(test)
+      //this.test$.subscribe(elt => console.log(elt));
   }
 }
