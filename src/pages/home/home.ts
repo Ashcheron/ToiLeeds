@@ -26,7 +26,7 @@ export class HomePage implements OnInit{
 
   public toilets = []; 
 
-  private _url = "http://10.8.0.4:3000/beer";
+  
 
   constructor(public navCtrl: NavController, private http: HttpClient) {
     this.yellow = "#ffd62a";
@@ -44,7 +44,7 @@ export class HomePage implements OnInit{
   }
 
   getData(): Observable<Vessa[]> {
-    return this.http.get<Vessa[]>("http://10.8.0.4:3000/beer");
+    return this.http.get<Vessa[]>("http://10.8.0.4:3000/toilet");
     
     //console.log(test)
       //this.test$.subscribe(elt => console.log(elt));
