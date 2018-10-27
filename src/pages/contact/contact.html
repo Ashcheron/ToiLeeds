@@ -1,17 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+    <ion-title>Drink Stands</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+<ion-content padding>
+  <ion-list style="">
+
+    <ion-item *ngFor="let i of toilets">
+      <ion-avatar item-end [style.background-color]="i.count >= 15 ? this.red: 
+          i.count >= 10 ? this.yellow: this.green">
+
+      </ion-avatar>
+
+      <h1>{{i.name}}</h1>
+      <h2>{{"queue: " + i.count}}</h2>
+
     </ion-item>
+
   </ion-list>
 </ion-content>
