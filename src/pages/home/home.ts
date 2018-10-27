@@ -34,8 +34,6 @@ export class HomePage implements OnInit{
     this.red = "#ff2f2f";
 
     this.getData();
-
-    console.log(this.toilets)
   }
 
   ngOnInit() {

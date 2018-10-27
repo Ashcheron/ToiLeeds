@@ -43,8 +43,8 @@ export class ContactPage implements OnInit{
     .subscribe(data => this.toilets = data);
   }
 
-  getData(): Observable<Vessa[]> {
-    return this.http.get<Vessa[]>("http://10.8.0.4:3000/beer");
+  getData(): Observable<Kalja[]> {
+    return this.http.get<Kalja[]>("http://10.8.0.4:3000/beer");
     
     //console.log(test)
       //this.test$.subscribe(elt => console.log(elt));
