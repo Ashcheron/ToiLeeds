@@ -8,13 +8,13 @@
   <ion-list style="">
 
     <ion-item *ngFor="let i of stands">
-      <ion-avatar item-end [style.background-color]="i.count >= 15 ? this.red: 
+      <ion-avatar item-end [style.background-color]="i.count >= 30 ? this.red: 
           i.count >= 10 ? this.yellow: this.green">
 
       </ion-avatar>
 
-      <h1>{{i.name}}</h1>
-      <h2>{{"queue: " + i.count}}</h2>
+      <strong><p>{{i.name}}</p></strong>
+      <strong><p>1 Min ago</p></strong>
 
     </ion-item>
 
