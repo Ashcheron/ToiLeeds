@@ -72,13 +72,13 @@ export class AboutPage implements OnInit {
       this.mapReady = true;
     });
 
-    const imageBounds = [{"lat": 53.818956, "lng": -1.584149},
-    {"lat": 53.815026, "lng": -1.579083}];
+    const imageBounds = [{"lat": 53.818956, "lng": -1.584891},
+    {"lat": 53.814849, "lng": -1.578593}];
 
     let groundOverlay = this.map.addGroundOverlay({
       'url': "../../assets/imgs/map.png",
       'bounds': imageBounds,
-      'opacity': 0.5
+      'opacity': 1
     });
 
 
