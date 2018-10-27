@@ -1,5 +1,7 @@
 {
   "name": "ToiLeeds",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

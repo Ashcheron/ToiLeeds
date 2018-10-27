@@ -7,7 +7,6 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  items = ["lol", "troll", "patrol"];
   constructor(public navCtrl: NavController) {
 
   }
