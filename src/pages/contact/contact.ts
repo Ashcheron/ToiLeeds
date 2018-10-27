@@ -24,7 +24,7 @@ export class ContactPage implements OnInit{
   green: String;
   red: String;
 
-  public toilets = []; 
+  public stands = []; 
 
   private _url = "http://10.8.0.4:3000/beer";
 
@@ -35,12 +35,12 @@ export class ContactPage implements OnInit{
 
     this.getData();
 
-    console.log(this.toilets)
+    console.log(this.stands)
   }
 
   ngOnInit() {
     this.getData()
-    .subscribe(data => this.toilets = data);
+    .subscribe(data => this.stands = data);
   }
 
   getData(): Observable<Kalja[]> {
