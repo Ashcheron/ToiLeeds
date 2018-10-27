@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { Observable } from "rxjs/Observable";
+import { HttpClient} from "@angular/common/http";
 import { Geolocation } from '@ionic-native/geolocation';
 import {
   GoogleMaps,
@@ -13,15 +14,26 @@ import {
   Environment, GroundOverlay
 } from '@ionic-native/google-maps';
 
+interface Vessa {
+  id: number;
+  count: number;
+  name: String;
+  gps: String;
+  timestamp: String;
+  type: number;
+}
+
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
-export class AboutPage {
+export class AboutPage implements OnInit {
   mapReady: boolean = false;
   map: GoogleMap;
+  public toilets = []; 
+  public stands = []; 
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, private geolocation: Geolocation, private http: HttpClient)  {
     console.log(this.map);
 
     /*this.geolocation.getCurrentPosition().then((resp) => {
@@ -71,7 +83,23 @@ export class AboutPage {
 
 
 
+
   }
 
+  ngOnInit() {
+    this.getToilets()
+    .subscribe(data => this.toilets = data);
+
+    this.getStands()
+    .subscribe(data => this.stands = data);
+  }
+
+  getToilets(): Observable<Vessa[]> {
+    return this.http.get<Vessa[]>("http://10.8.0.4:3000/toilet");
+  }
+
+  getStands(): Observable<Vessa[]> {
+    return this.http.get<Vessa[]>("http://10.8.0.4:3000/beer");
+  }
 
 }
